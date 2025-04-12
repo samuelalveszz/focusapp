@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <!-- Para garantir responsividade em smartphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem Detalhada</title>
+
+  <style>
+   /* Reset & Tipografia base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121212;
+  color: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Cabeçalho */
+.header {
+  padding: 16px;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-bottom: 1px solid #2a2a2a;
+  background-color: #1a1a1a;
+}
+
+/* Área de conteúdo com scroll */
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+}
+
+/* Mensagem original em destaque */
+.original-message {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 24px;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  border-left: 3px solid #ffffff;
+  padding-left: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+/* Caixa de resposta fixa no fundo */
+.reply-box {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  background-color: #1e1e1e;
+  border-top: 1px solid #2a2a2a;
+}
+
+/* Caixa de texto para resposta */
+.reply-box textarea {
+  resize: none;
+  padding: 14px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 1em;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.reply-box textarea:focus {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+  outline: none;
+}
+
+/* Botão de enviar */
+.reply-box button {
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 12px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reply-box button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .header {
+    font-size: 1.1em;
+  }
+
+  .original-message {
+    font-size: 1.15em;
+  }
+
+  .reply-box textarea,
+  .reply-box button {
+    font-size: 0.95em;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho: Remetente -->
+  <div class="header" id="remetente"></div>
+
+  <!-- Área principal com a mensagem original -->
+  <div class="content-area">
+    <div class="original-message" id="conteudo"></div>
+  </div>
+
+  <!-- Caixa de resposta fixa no rodapé -->
+  <div class="reply-box">
+    <textarea id="resposta" rows="3" placeholder="Escreve a tua resposta..."></textarea>
+    <button onclick="enviarResposta()">Enviar Resposta</button>
+  </div>
+
+  <script>
+    // Função para obter parâmetros da URL (remetente e conteudo)
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Preenche a página com dados da querystring
+    document.getElementById('remetente').textContent = getQueryParam('remetente') || 'Remetente';
+    document.getElementById('conteudo').textContent  = getQueryParam('conteudo')  || 'Conteúdo da mensagem';
+
+    // Função simples para enviar resposta (exemplo)
+    function enviarResposta() {
+  const resposta = document.getElementById('resposta').value.trim();
+  if (!resposta) {
+    alert('Por favor, escreve uma resposta antes de enviar.');
+    return;
+  }
+  alert(`Resposta enviada: "${resposta}"`);
+  document.getElementById('resposta').value = '';
+
+  // Volta automaticamente para a página anterior após 500ms (para dar tempo de ler o alert)
+  setTimeout(() => {
+    window.history.back();
+  }, 500);
+}
+
+  </script>
+</body>
+</html>
+

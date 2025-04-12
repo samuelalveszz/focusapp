@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FOCUS - Aplicação de produtividade com IA" />
+  <meta name="theme-color" content="#121212" />
+  <title>FOCUS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background-color: #121212;
+      color: #ffffff;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #ffffff;
+        color: #121212;
+      }
+      .option-card {
+        border-color: #121212;
+      }
+      .option-desc {
+        color: #666;
+      }
+      .settings-gear {
+        background-color: #f5f5f5;
+        color: #666;
+      }
+      .settings-gear:hover {
+        color: #121212;
+      }
+      .option-icon {
+        background-color: #f5f5f5;
+      }
+      .focus-cycle .option-icon {
+        background-color: #e3f2fd;
+      }
+      .neutral-phone .option-icon {
+        background-color: #f3e5f5;
+      }
+    }
+
+    .settings-gear {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: #1e1e1e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      color: #bdbdbd;
+      font-size: 20px;
+      z-index: 1000;
+    }
+
+    .settings-gear:hover {
+      transform: rotate(90deg);
+      color: #ffffff;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 375px;
+      width: 90%;
+      padding: 20px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 95%;
+        padding: 15px;
+      }
+      
+      .logo {
+        width: 160px;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .option-card {
+        padding: 15px;
+      }
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.8rem auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    p.subtitle {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .option-card {
+      border: 1px solid #ffffff;
+      background-color: transparent;
+      padding: 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option-card:hover, .option-card:active {
+      transform: translateY(-2px);
+    }
+
+    .focus-cycle {
+      border-color: #2196f3;
+    }
+
+    .focus-cycle:hover {
+      background-color: rgba(33, 150, 243, 0.1);
+    }
+
+    .neutral-phone {
+      border-color: #9c27b0;
+    }
+
+    .neutral-phone:hover {
+      background-color: rgba(156, 39, 176, 0.1);
+    }
+
+    .option-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .focus-cycle .option-icon {
+      background-color: rgba(33, 150, 243, 0.2);
+    }
+
+    .neutral-phone .option-icon {
+      background-color: rgba(156, 39, 176, 0.2);
+    }
+
+    .option-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .option-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .option-desc {
+      font-size: 0.9rem;
+      color: #bdbdbd;
+    }
+
+    .cancel-btn {
+      border: 1px solid #666;
+      background-color: transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .cancel-btn:hover, .cancel-btn:active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .cancel-btn:focus {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-gear" onclick="location.href='definicao_utilizador.html';" role="button" aria-label="Configurações" tabindex="0">
+    &#9881;
+  </div>
+
+  <div class="container">
+    <img src="FOCUS.AI_png.png" alt="Focus Logo" class="logo" />
+    <h1>Ser Produtivo com IA.</h1>
+    <p class="subtitle">Como é que deseja começar?</p>
+
+    <div class="option-card focus-cycle" onclick="location.href='focusCycle.html';" role="button" aria-label="Iniciar Focus Cycle" tabindex="0">
+      <div class="option-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="option-content">
+        <div class="option-title">Focus Cycle</div>
+        <div class="option-desc">Cycle between focus and break periods</div>
+      </div>
+    </div>
+
+    <div class="option-card neutral-phone" onclick="location.href='front_page.html';" role="button" aria-label="Usar telefone normalmente" tabindex="0">
+      <div class="option-icon">
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+      <div class="option-content">
+        <div class="option-title">Neutral Phone</div>
+        <div class="option-desc">Use your phone normally</div>
+      </div>
+    </div>
+
+    <button class="cancel-btn" onclick="handleCancel()" aria-label="Cancelar e sair da aplicação">Cancel</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const clickableElements = document.querySelectorAll('[role="button"]');
+      
+      clickableElements.forEach(element => {
+        element.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      });
+
+      function handleCancel() {
+        const confirmed = confirm('Deseja realmente sair da app Focus?');
+        if (confirmed) {
+          document.body.style.opacity = '0';
+          setTimeout(() => {
+            window.close();
+          }, 300);
+        }
+      }
+
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
+

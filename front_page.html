@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <!-- Para comportamento responsivo em telemóveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCUS</title>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  color: #ffffff;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  max-width: 375px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.logo,
+.focus-logo {
+  width: 140px;              /* Tamanho consistente e visível */
+  max-width: 60%;            /* Para adaptar a ecrãs mais pequenos */
+  height: auto;
+  display: block;            /* Centraliza naturalmente com margin auto */
+  margin: 0 auto 0.8rem auto; /* Espaço inferior reduzido para aproximação ao título */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover,
+.focus-logo:hover {
+  transform: scale(1.03);    /* Feedback visual subtil ao hover */
+}
+
+
+.notifications {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.notification {
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.notification:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.notification h4 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.notification p {
+  font-size: 0.9rem;
+  color: #bdbdbd;
+}
+
+.settings-gear {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #1e1e1e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  color: #bdbdbd;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+.settings-gear:hover {
+  background-color: #292929;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+.back-home-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.back-home-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.back-home-btn .icon {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+  transition: fill 0.3s ease;
+}
+
+.neutral-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #bdbdbd;
+  margin: 0 0 1rem 0; /* reduzido para aproximar dos botões */
+}
+
+.container .option-card {
+  margin-bottom: 1rem; /* menos espaço entre botões */
+}
+
+  </style>
+</head>
+<body>
+  <a href="selecao.html" class="back-home-btn" aria-label="Voltar à página principal">
+    <svg viewBox="0 0 24 24" class="icon">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+    Home
+  </a>
+  
+  <div class="container">
+    <!-- Substitui aqui o texto "FOCUS" pelo teu LOGO PNG -->
+    <!-- Ajusta o 'src' para o caminho correto do teu ficheiro PNG -->
+    <img 
+      class="focus-logo" 
+      src="FOCUS.AI_png.png" 
+      alt="Focus Logo"
+      onclick="location.href='focusCycle.html';" 
+    />
+    <h1 class="neutral-title">Neutral Phone</h1>
+
+    <div class="container">
+      <!-- Ícone de definições -->
+      <div class="settings-gear" onclick="location.href='definicao_utilizador.html';">
+          ⚙️
+      </div>
+    <div class="notifications">
+      <div class="notification" onclick="location.href='mensagens.html';">
+        <h4>Gestão de Mensagens</h4>
+        <p>Organiza as tuas mensagens diárias de forma eficaz.</p>
+      </div>
+      <div class="notification" onclick="location.href='calendario.html';">
+        <h4>Calendário</h4>
+        <p>Consulta e gere os teus compromissos facilmente.</p>
+      </div>
+       <!-- Nova secção para “As tuas notícias” -->
+       <div class="notification" onclick="location.href='noticias.html';">
+        <h4>As tuas notícias</h4>
+        <p>Mantém-te informado sobre o que realmente importa.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
