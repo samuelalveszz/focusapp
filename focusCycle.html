@@ -1,0 +1,174 @@
+<!DOCTYPE html> 
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCUS CYCLE</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #1a1a1a, #2a2a2a, #121212, #1a1a1a);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: gradientShift 20s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .cycle-container {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .cycle-logo {
+      width: 130%;
+      max-width: 140px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      color: #e0e0e0;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .timer-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    .timer-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #1a1a1a;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .timer-progress {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(#e0e0e0 0%, transparent 0%);
+      transition: background 1s linear;
+    }
+
+    .bottom-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      background-color: rgba(224, 224, 224, 0.1);
+      color: #e0e0e0;
+      padding: 10px 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 150px;
+      text-align: center;
+    }
+
+    .action-btn:hover {
+      background-color: rgba(224, 224, 224, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    .status-text {
+      color: #e0e0e0;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      opacity: 0.8;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cycle-container">
+    <img 
+      class="cycle-logo" 
+      src="FOCUS.AI_png.png" 
+      alt="Focus Logo"
+    />
+    <div class="title">MOMENTO DE CONCENTRAÇÃO</div>
+
+    <div class="timer-container">
+      <div class="timer-circle">
+        <div class="timer-progress" id="timer-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-buttons">
+    <button class="action-btn" onclick="location.href='break.html'">5-Minute Break</button>
+    <button class="action-btn" onclick="location.href='selecao.html'">Finalizar Sessão</button>
+  </div>
+
+  <script>
+    let totalSeconds = 25 * 60;
+    const totalTime = totalSeconds;
+    const timerProgress = document.getElementById('timer-progress');
+
+    function updateTimer() {
+      const progress = ((totalTime - totalSeconds) / totalTime) * 100;
+
+      // Update progress circle
+      timerProgress.style.background = `conic-gradient(#e0e0e0 ${progress}%, transparent ${progress}%)`;
+
+      if (totalSeconds <= 0) {
+        timerProgress.style.background = `conic-gradient(#e0e0e0 100%, transparent 100%)`;
+      } else {
+        totalSeconds--;
+        setTimeout(updateTimer, 1000);
+      }
+    }
+
+    // Initialize timer
+    updateTimer();
+  </script>
+</body>
+</html>
+

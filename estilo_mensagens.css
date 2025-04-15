@@ -1,0 +1,267 @@
+/* Reset & base */
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #bdbdbd;
+  --background-color: #121212;
+  --hover-color: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Topo fixo que ocupa mais espaço vertical */
+.page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  z-index: 1000;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Botão voltar, alinhado à esquerda */
+.back-button {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: transparent;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.back-button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+/* Título grande */
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Navegação (abas Mail & Social) */
+.tabs-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Conteúdo principal */
+.content {
+  flex: 1;
+  margin-top: 120px;
+  padding: 0 16px 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Secção das mensagens */
+.messages-section {
+  display: block;
+}
+
+/* Cartões de mensagem */
+.message {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.message:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação fade-out */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Sugerir respostas + botão teclado */
+.suggestions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+/* Botões de resposta rápida */
+.suggestions button {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  text-align: center;
+}
+
+.suggestions button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+/* Botão teclado */
+.keyboard-btn {
+  background-color: var(--hover-color);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard-btn:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--primary-color);
+}
+
+/* Rede social extra info */
+.network {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  margin-top: 0.5rem;
+}
+
+.bottom-back {
+  margin-top: 2rem;
+  margin-left: 0;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .back-button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .app-title {
+    font-size: 1.3rem;
+  }
+  
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+  
+  .message {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .suggestions button {
+    font-size: 0.85rem;
+    min-width: 80px;
+    padding: 6px 12px;
+  }
+  
+  .keyboard-btn {
+    padding: 8px;
+  }
+  
+  .keyboard-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Notificação */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 320px;
+}
+
+.notification::before {
+  content: '✓';
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.notification.hide {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
+}
+  
