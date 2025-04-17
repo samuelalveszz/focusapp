@@ -124,6 +124,66 @@
       opacity: 0.8;
       letter-spacing: 0.5px;
     }
+
+    /* Confirmation Modal Styles */
+    .confirmation-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .confirmation-content {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .confirmation-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+
+    .confirmation-message {
+      color: #bdbdbd;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .confirmation-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .confirmation-btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      border: 1px solid #e0e0e0;
+      background-color: transparent;
+      color: #e0e0e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .confirmation-btn:hover {
+      background-color: rgba(224, 224, 224, 0.1);
+    }
+
+    .confirmation-btn.confirm {
+      background-color: rgba(224, 224, 224, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -143,8 +203,36 @@
   </div>
 
   <div class="bottom-buttons">
-    <button class="action-btn" onclick="location.href='break.html'">5-Minute Break</button>
-    <button class="action-btn" onclick="location.href='selecao.html'">Finalizar Sessão</button>
+    <button class="action-btn" onclick="showBreakConfirmation()">5-Minute Break</button>
+    <button class="action-btn" onclick="showEndSessionConfirmation()">Finalizar Sessão</button>
+  </div>
+
+  <!-- Break Confirmation Modal -->
+  <div class="confirmation-modal" id="breakConfirmation">
+    <div class="confirmation-content">
+      <div class="confirmation-title">Confirmar Pausa</div>
+      <div class="confirmation-message">
+        Tem a certeza que quer fazer uma pausa agora? Interromper o ciclo de foco pode afetar a sua produtividade!
+      </div>
+      <div class="confirmation-buttons">
+        <button class="confirmation-btn" onclick="hideBreakConfirmation()">Cancelar</button>
+        <button class="confirmation-btn confirm" onclick="proceedToBreak()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Session Confirmation Modal -->
+  <div class="confirmation-modal" id="endSessionConfirmation">
+    <div class="confirmation-content">
+      <div class="confirmation-title">Finalizar Sessão</div>
+      <div class="confirmation-message">
+        Tem a certeza que quer finalizar a sessão antes do tempo? Terminar o ciclo de foco antes do tempo pode afetar a sua produtividade!
+      </div>
+      <div class="confirmation-buttons">
+        <button class="confirmation-btn" onclick="hideEndSessionConfirmation()">Cancelar</button>
+        <button class="confirmation-btn confirm" onclick="proceedToEndSession()">Confirmar</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -168,6 +256,34 @@
 
     // Initialize timer
     updateTimer();
+
+    // Break confirmation functions
+    function showBreakConfirmation() {
+      document.getElementById('breakConfirmation').style.display = 'flex';
+    }
+
+    function hideBreakConfirmation() {
+      document.getElementById('breakConfirmation').style.display = 'none';
+    }
+
+    function proceedToBreak() {
+      hideBreakConfirmation();
+      location.href = 'break.html';
+    }
+
+    // End Session confirmation functions
+    function showEndSessionConfirmation() {
+      document.getElementById('endSessionConfirmation').style.display = 'flex';
+    }
+
+    function hideEndSessionConfirmation() {
+      document.getElementById('endSessionConfirmation').style.display = 'none';
+    }
+
+    function proceedToEndSession() {
+      hideEndSessionConfirmation();
+      location.href = 'selecao.html';
+    }
   </script>
 </body>
 </html>

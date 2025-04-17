@@ -101,6 +101,7 @@
       font-size: 0.9rem;
       font-weight: 500;
       transition: all 0.3s ease;
+      margin-top: 20px;
     }
 
     .back-button:hover {
@@ -109,34 +110,37 @@
     }
 
     .add-button {
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       margin-top: 20px;
       border-radius: 50%;
       background-color: var(--accent-color);
       color: var(--primary-bg);
-      font-size: 1.8rem;
-      font-weight: bold;
+      font-size: 1.5rem;
+      font-weight: 300;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
     }
 
     .add-button:hover {
       background-color: #e0e0e0;
-      transform: scale(1.08) rotate(90deg);
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
 
     .button-container {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 0 16px;
       margin-top: 30px;
       position: sticky;
       bottom: 20px;
+      z-index: 100;
     }
 
     @media (max-width: 480px) {
